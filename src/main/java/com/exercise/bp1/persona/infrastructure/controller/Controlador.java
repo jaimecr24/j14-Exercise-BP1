@@ -15,36 +15,36 @@ public class Controlador {
     IPersona personaService;
 
     @GetMapping
-    public List<PersonaOutputDTO> getLista()
+    public List<PersonaOutputDTO> findAll()
     {
-        return personaService.getAllPersona();
+        return personaService.findAll();
     }
 
-    @GetMapping("/persona/{id}")
+    @GetMapping("{id}")
     public PersonaOutputDTO getById(@PathVariable Integer id) throws Exception
     {
-        return personaService.getPersonaById(id);
+        return personaService.getById(id);
     }
 
-    @GetMapping("/usuario/{usuario}")
-    public List<PersonaOutputDTO> getByNombre(@PathVariable String usuario) throws Exception
+    @GetMapping("/{usuario}/usuario")
+    public List<PersonaOutputDTO> getByUser(@PathVariable String usuario) throws Exception
     {
-        return personaService.getPersonaByUsuario(usuario);
+        return personaService.getByUser(usuario);
     }
 
-    @PostMapping("/persona")
-    public PersonaOutputDTO addPersona(@RequestBody PersonaInputDTO personaInputDTO) throws Exception
+    @PostMapping
+    public PersonaOutputDTO add(@RequestBody PersonaInputDTO personaInputDTO) throws Exception
     {
         return personaService.addPersona(personaInputDTO);
     }
 
-    @PutMapping("/persona")
-    public PersonaOutputDTO setPersona(@RequestBody PersonaInputDTO personaInputDTO) throws Exception
+    @PutMapping("{id}")
+    public PersonaOutputDTO put(@RequestBody PersonaInputDTO personaInputDTO, @PathVariable Integer id) throws Exception
     {
-        return personaService.setPersona(personaInputDTO);
+        return personaService.putPersona(id, personaInputDTO);
     }
 
-    @DeleteMapping("/persona/{id}")
+    @DeleteMapping("{id}")
     public PersonaOutputDTO delById(@PathVariable Integer id) throws Exception
     {
         return personaService.delPersona(id);

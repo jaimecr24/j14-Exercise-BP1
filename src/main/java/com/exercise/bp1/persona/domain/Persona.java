@@ -3,7 +3,7 @@ package com.exercise.bp1.persona.domain;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
@@ -16,38 +16,33 @@ public class Persona {
     Integer id;
 
     @Size(min=6,max=10)
-    @Column(nullable = false)
+    @NotBlank(message = "usuario es nulo")
     String usuario;
 
-    @Column(nullable = false)
+    @NotBlank(message = "password es nulo")
     String password;
 
-    @Column(nullable = false)
+    @NotBlank(message = "nombre es nulo")
     String name;
 
-    @Column
     String surname;
 
-    @Email
-    @Column(nullable = false)
+    @NotBlank(message = "company_email es nulo")
     String company_email;
 
-    @Email
-    @Column(nullable = false)
+    @NotBlank(message = "personal_email es nulo")
     String personal_email;
 
-    @Column(nullable = false)
+    @NotBlank(message = "ciudad es nulo")
     String city;
 
-    @Column(nullable = false)
-    boolean active;
+    @NotBlank(message = "active es nulo") // Clase Boolean sí puede ser nulo
+    Boolean active;
 
-    @Column(nullable = false)
+    @NotBlank(message = "created_date es nulo")
     Date created_date;
 
-    @Column
     String imagen_url;
 
-    @Column
     Date termination_date;
 }
